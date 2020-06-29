@@ -21,10 +21,12 @@ export default class App extends Component {
         status: false
       })
     }
-    this.setState({
-      view: true
-    })
-    fetch(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${this.state.text1}&sname=${this.state.text2}`,{
+    if(this.state.text1.trim().length && this.state.text2.trim().length > 0){
+      this.setState({
+        view: true
+      })
+
+    fetch(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${this.state.text1.trim()}&sname=${this.state.text2.trim()}`,{
       headers: {
         "x-rapidapi-host": "love-calculator.p.rapidapi.com",
         "x-rapidapi-key": "8abef6e1eemshbf043345aba09d6p132a31jsn2d0d6caf9ea4"
@@ -32,13 +34,13 @@ export default class App extends Component {
     })
     .then(data => data.json())
     .then(data2 => {
-      // console.log(data2);
       this.setState({
         data: data2,
         view: false,
         status: true
       })
     })
+  }
   }
   render() {
     return (

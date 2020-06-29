@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default class display extends Component {
     render() {
-        // console.log(typeof this.props);
+        // console.log(this.props);
         return (
             <View style={styles.container}>
                 {this.props.status && <Fragment>
